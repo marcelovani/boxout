@@ -10,7 +10,7 @@ Put the module into your modules directory as usual.
 
 Configuration
 =============
-Visit /admin/config/content/wysiwyg
+Visit /admin/config/content/formats
 
 Edit the configuration for each Input format, i.e. Basic HTML
 /admin/config/content/formats/manage/basic_html
