@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Definition of \Drupal\boxout\Plugin\CKEditorPlugin\CodeButton.
+ * Definition of \Drupal\boxout\Plugin\CKEditorPlugin\Boxout.
  */
 
 namespace Drupal\boxout\Plugin\CKEditorPlugin;
@@ -13,14 +13,14 @@ use Drupal\Component\Plugin\PluginBase;
 use Drupal\editor\Entity\Editor;
 
 /**
- * Defines the "CodeButton" plugin.
+ * Defines the "Boxout" plugin.
  *
  * @CKEditorPlugin(
  *   id = "boxout",
- *   label = @Translation("CodeButton")
+ *   label = @Translation("Boxout")
  * )
  */
-class CodeButton extends PluginBase implements CKEditorPluginInterface, CKEditorPluginButtonsInterface {
+class Boxout extends PluginBase implements CKEditorPluginInterface, CKEditorPluginButtonsInterface {
   /**
    * Gets a path to module.
    *
@@ -60,22 +60,24 @@ class CodeButton extends PluginBase implements CKEditorPluginInterface, CKEditor
   }
 
   /**
-   * Implements CKEditorPluginButtonsInterface::getButtons().
+   * {@inheritdoc}
    */
-  public function getButtons() {
+  public function getConfig(Editor $editor) {
     return array(
-      'Code' => array(
-        'label' => t('Code tag'),
-        'image' => $this->path() . '/js/plugins/boxout/icons/code.png',
-      ),
+      'boxout_dialog_title_insert' => t('Insert Boxout'),
     );
   }
 
   /**
-   * Implements \Drupal\ckeditor\Plugin\CKEditorPluginInterface::getConfig().
+   * Implements CKEditorPluginButtonsInterface::getButtons().
    */
-  public function getConfig(Editor $editor) {
-    return array();
+  public function getButtons() {
+    return array(
+      'Boxout' => array(
+        'label' => t('Boxout'),
+        'image' => $this->path() . '/js/plugins/boxout/boxout.png',
+      ),
+    );
   }
 
 }

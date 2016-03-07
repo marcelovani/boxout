@@ -17,6 +17,9 @@ Edit the configuration for each Input format, i.e. Basic HTML
 
 Enable the Boxout button
 
+ps: Boxout uses a DIV element to wrap the box, make sure you configure the
+text format to allow <div>
+
 How to use
 ==========
 When you are editing an article you will see the Boxout button, click on it to

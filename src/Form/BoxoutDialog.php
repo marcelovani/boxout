@@ -12,7 +12,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\filter\Entity\FilterFormat;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
-use Drupal\boxout\Ajax\EditorDialogSave;
+use Drupal\editor\Ajax\EditorDialogSave;
 use Drupal\Core\Ajax\CloseModalDialogCommand;
 
 /**
@@ -24,7 +24,7 @@ class BoxoutDialog extends FormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'editor_link_dialog';
+    return 'editor_boxout_dialog';
   }
 
   /**
@@ -40,10 +40,12 @@ class BoxoutDialog extends FormBase {
     $input = isset($user_input['editor_object']) ? $user_input['editor_object'] : array();
 
     $form['#tree'] = TRUE;
-    $form['#attached']['library'][] = 'boxout/drupal.boxout.dialog';
-    $form['#prefix'] = '<div id="boxout-dialog-form">';
+    $form['#attached']['library'][] = 'editor/drupal.editor.dialog';
+    $form['#attached']['library'][] = 'boxout/boxout.dialog';
+    $form['#prefix'] = '<div id="editor-boxout-dialog-form">';
     $form['#suffix'] = '</div>';
 
+    //@todo remove this
     $form['attributes']['href'] = array(
       '#title' => $this->t('URL'),
       '#type' => 'textfield',
@@ -51,12 +53,49 @@ class BoxoutDialog extends FormBase {
       '#maxlength' => 2048,
     );
 
+    $form['attributes']['style'] = array(
+      '#title' => $this->t('Style'),
+      '#type' => 'select',
+      '#options' => array(
+        'default' => 'Default',
+        'plain' => 'Plain',
+      ),
+      '#default_value' => isset($input['style']) ? $input['style'] : 'default',
+    );
+    $form['attributes']['header'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Header'),
+      '#default_value' => isset($input['header']) ? $input['header'] : '',
+      '#attributes' => ['class' => 'dialog-header'],
+      '#size' => 40,
+      '#maxlength' => 256,
+    );
+    $form['attributes']['header_element_type'] = array(
+      '#type' => 'select',
+      '#title' => $this->t('Element type'),
+      '#options' => array(
+        'p' => '<p>',
+        'h2' => '<h2>',
+        'h3' => '<h3>',
+        'h4' => '<h4>',
+        'h5' => '<h5>',
+      ),
+      '#default_value' => isset($input['header_element_type']) ? $input['header_element_type'] : 'h2',
+      '#attributes' => ['class' => 'dialog-header-type'],
+    );
+    $form['attributes']['body'] = array(
+      '#type' => 'textarea',
+      '#title' => $this->t('Body'),
+      '#default_value' => isset($input['body']) ? $input['body'] : '',
+      '#size' => 50,
+    );
+
     $form['actions'] = array(
       '#type' => 'actions',
     );
     $form['actions']['save_modal'] = array(
       '#type' => 'submit',
-      '#value' => $this->t('Save'),
+      '#value' => $this->t('Insert'),
       // No regular submit-handler. This form only works via JavaScript.
       '#submit' => array(),
       '#ajax' => array(
@@ -80,7 +119,7 @@ class BoxoutDialog extends FormBase {
         '#type' => 'status_messages',
         '#weight' => -10,
       ];
-      $response->addCommand(new HtmlCommand('#boxout-dialog-form', $form));
+      $response->addCommand(new HtmlCommand('#editor-boxout-dialog-form', $form));
     }
     else {
       $response->addCommand(new EditorDialogSave($form_state->getValues()));
