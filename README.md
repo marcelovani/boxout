@@ -18,10 +18,10 @@ Edit the configuration for each Input format, i.e. Basic HTML
 Enable the Boxout button
 
 ps: Boxout uses a DIV element to wrap the box, make sure you configure the
-text format to allow <div>
+text format to allow <div class=""> in Filter settings
 
 How to use
 ==========
 When you are editing an article you will see the Boxout button, click on it to
-see a popup where you can insert a Header and a Body. When you click Insert 
+see a popup where you can insert a Header and a Body. When you click Insert
 it will add a div that will format and display the box.
