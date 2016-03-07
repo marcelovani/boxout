@@ -45,14 +45,6 @@ class BoxoutDialog extends FormBase {
     $form['#prefix'] = '<div id="editor-boxout-dialog-form">';
     $form['#suffix'] = '</div>';
 
-    //@todo remove this
-    $form['attributes']['href'] = array(
-      '#title' => $this->t('URL'),
-      '#type' => 'textfield',
-      '#default_value' => isset($input['href']) ? $input['href'] : '',
-      '#maxlength' => 2048,
-    );
-
     $form['attributes']['style'] = array(
       '#title' => $this->t('Style'),
       '#type' => 'select',
