@@ -20,8 +20,8 @@
 .boxout.plain {
   float: none;
   margin: .4em 0 .4em 0;
-  background: #EFEFEF;
+  background: #efefef;
   padding: 0.4em;
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   width: 100%;
 }

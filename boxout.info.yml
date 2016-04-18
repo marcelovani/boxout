@@ -3,6 +3,5 @@ type: module
 description: CKEditor Plugin to add a styled box to your content
 core: 8.x
 package: CKEditor
-version: VERSION
 dependencies:
   - ckeditor
