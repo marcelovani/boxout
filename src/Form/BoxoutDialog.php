@@ -46,6 +46,7 @@ class BoxoutDialog extends FormBase {
     $form['#suffix'] = '</div>';
 
     $form['attributes']['style'] = array(
+      '#id' => 'boxout-style',
       '#title' => $this->t('Style'),
       '#type' => 'select',
       '#options' => array(
@@ -58,7 +59,7 @@ class BoxoutDialog extends FormBase {
       '#type' => 'textfield',
       '#title' => $this->t('Header'),
       '#default_value' => isset($input['header']) ? $input['header'] : '',
-      '#attributes' => ['class' => 'dialog-header'],
+      '#attributes' => ['class' => ['dialog-header']],
       '#size' => 40,
       '#maxlength' => 256,
     );
@@ -70,11 +71,12 @@ class BoxoutDialog extends FormBase {
       'h5' => '<h5>',
     ];
     $form['attributes']['header_element_type'] = array(
+      '#id' => 'boxout-element-type',
       '#type' => 'select',
       '#title' => $this->t('Element type'),
       '#options' => $options,
       '#default_value' => isset($input['header_element_type']) ? $input['header_element_type'] : 'h2',
-      '#attributes' => ['class' => 'dialog-header-type'],
+      '#attributes' => ['class' => ['dialog-header-type']],
     );
     $form['attributes']['body'] = array(
       '#type' => 'textarea',
