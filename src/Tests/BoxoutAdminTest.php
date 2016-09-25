@@ -4,6 +4,7 @@ namespace Drupal\boxout\Tests;
 
 use Drupal\simpletest\WebTestBase;
 use Drupal\filter\Entity\FilterFormat;
+use Drupal\editor\Entity\Editor;
 
 /**
  * Tests administration of Boxout.
@@ -84,13 +85,6 @@ class BoxoutAdminTest extends WebTestBase {
 
     $this->drupalPostForm(NULL, $edit, t('Save configuration'));
   }
-
-  /**
-   * Test the configuration for basic html and full html.
-   */
-//  function testBoxoutConfig() {
-    // @todo test values from configuration.
-//  }
 
   /**
    * Test article creation.
