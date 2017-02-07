@@ -2,9 +2,7 @@
 
 namespace Drupal\boxout\Plugin\CKEditorPlugin;
 
-use Drupal\ckeditor\CKEditorPluginInterface;
-use Drupal\ckeditor\CKEditorPluginButtonsInterface;
-use Drupal\Component\Plugin\PluginBase;
+use Drupal\ckeditor\CKEditorPluginBase;
 use Drupal\editor\Entity\Editor;
 
 /**
@@ -12,11 +10,11 @@ use Drupal\editor\Entity\Editor;
  *
  * @CKEditorPlugin(
  *   id = "boxout",
- *   label = @Translation("Boxout")
+ *   label = @Translation("Boxout"),
+ *   module = "boxout"
  * )
  */
-class Boxout extends PluginBase implements CKEditorPluginInterface, CKEditorPluginButtonsInterface {
-
+class Boxout extends CKEditorPluginBase {
   /**
    * Gets a path to module.
    *
@@ -60,7 +58,7 @@ class Boxout extends PluginBase implements CKEditorPluginInterface, CKEditorPlug
    */
   public function getConfig(Editor $editor) {
     return array(
-      'boxout_dialog_title_insert' => t('Insert Boxout'),
+      'boxout_dialog_title_insert' => $this->t('Insert Boxout'),
     );
   }
 
@@ -70,7 +68,7 @@ class Boxout extends PluginBase implements CKEditorPluginInterface, CKEditorPlug
   public function getButtons() {
     return array(
       'Boxout' => array(
-        'label' => t('Boxout'),
+        'label' => $this->t('Boxout'),
         'image' => $this->path() . '/js/plugins/boxout/boxout.png',
       ),
     );
