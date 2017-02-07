@@ -4,7 +4,6 @@ namespace Drupal\boxout\Tests;
 
 use Drupal\simpletest\WebTestBase;
 use Drupal\filter\Entity\FilterFormat;
-use Drupal\editor\Entity\Editor;
 
 /**
  * Tests administration of Boxout.
@@ -34,6 +33,9 @@ class BoxoutAdminTest extends WebTestBase {
    */
   protected $privilegedUser;
 
+  /**
+   * Sets up environment for running tests.
+   */
   protected function setUp() {
     parent::setUp();
 
@@ -56,7 +58,7 @@ class BoxoutAdminTest extends WebTestBase {
         'filter_html' => array(
           'status' => 1,
           'settings' => array('allowed_html' => '<h2> <p> <div class="boxout default plain">'),
-        )
+        ),
       ),
     ));
     $filtered_html_format->save();
@@ -132,4 +134,5 @@ class BoxoutAdminTest extends WebTestBase {
     // Check markup.
     $this->assertRaw($markup);
   }
+
 }

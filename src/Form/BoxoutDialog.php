@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\boxout\Form\BoxoutDialog.
- */
-
 namespace Drupal\boxout\Form;
 
 use Drupal\Core\Form\FormBase;
@@ -50,8 +45,8 @@ class BoxoutDialog extends FormBase {
       '#title' => $this->t('Style'),
       '#type' => 'select',
       '#options' => array(
-        'default' => t('Default'),
-        'plain' => t('Plain'),
+        'default' => $this->t('Default'),
+        'plain' => $this->t('Plain'),
       ),
       '#default_value' => isset($input['style']) ? $input['style'] : 'default',
     );

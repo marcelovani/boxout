@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @file
- * Definition of \Drupal\boxout\Plugin\CKEditorPlugin\Boxout.
- */
-
 namespace Drupal\boxout\Plugin\CKEditorPlugin;
 
 use Drupal\ckeditor\CKEditorPluginInterface;
@@ -21,6 +16,7 @@ use Drupal\editor\Entity\Editor;
  * )
  */
 class Boxout extends PluginBase implements CKEditorPluginInterface, CKEditorPluginButtonsInterface {
+
   /**
    * Gets a path to module.
    *
