@@ -129,7 +129,7 @@ class BoxoutAdminTest extends WebTestBase {
     $edit = array();
     $edit['title[0][value]'] = 'Boxout test node ' . $this->randomMachineName(10);
     $edit['body[0][value]'] = $markup;
-    $this->drupalPostForm('node/add/article', $edit, t('Save and publish'));
+    $this->drupalPostForm('node/add/article', $edit, t('Save'));
 
     // Check markup.
     $this->assertRaw($markup);
